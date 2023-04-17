@@ -65,7 +65,7 @@ const HomeScreen = ({ navigation }) => {
         </SafeAreaView>
         <Button
           title="Cari"
-          color="#1101c9"
+          color="green"
           onPress={() => {
             console.log(inputData);
             navigation.navigate("Hasil Pencarian", {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   box: {
-    backgroundColor: "blue",
+    backgroundColor: "green",
     flex: 1.3,
   },
   headerText: {

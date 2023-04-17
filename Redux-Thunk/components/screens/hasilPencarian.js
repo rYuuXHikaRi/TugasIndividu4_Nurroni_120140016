@@ -33,7 +33,7 @@ const HasilPencarian = ({route}) => {
     }, []);
 
     if (isLokAwalBlank && isLokTujuanBlank && isTglBerangkatBlank) {
-      filteredData = false;
+      filteredData = data;
     } else if (isLokAwalBlank && isLokTujuanBlank){
       filteredData = data.filter(item => item.tglBerangkat === tglBerangkat);
     } else if (isLokTujuanBlank && isTglBerangkatBlank) {
@@ -71,25 +71,33 @@ const HasilPencarian = ({route}) => {
         <View style={styles.infoArea}>
             {
               filteredData ? (
-                <View>
+                <View style={styles.flightSchedContainer}>
                       <FlatList
                         data={filteredData}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                          <View>
-                            <Text>Nomor Penerbangan: {item.nomorPenerbangan}</Text>
-                            <Text>Lokasi Keberangkatan: {item.lokAwal}</Text>
-                            <Text>Lokasi Tujuan: {item.lokTujuan}</Text>
-                            <Text>Nama Maskapai: {item.namaMaskapai}</Text>
-                            <Text>Tanggal Berangkat: {item.tglBerangkat}</Text>
-                            <Text></Text>
+                          <View style={styles.flightSchedBox}>
+
+                            <View>
+                              <Text style={{fontSize: 16}}>{item.nomorPenerbangan}</Text>
+                              <View style={{flex: 1, flexDirection: "row", alignItems: "center", marginTop: 20}}>
+                                <FontAwesome name="plane" size={30} style={{ color: "green" }}/>
+                                <Text style={{marginLeft: 10, fontSize: 16, fontWeight: "600"}}>{item.namaMaskapai}</Text>
+                              </View>
+                            </View>
+
+                            <View style={{alignItems: "center"}}>
+                              <Text style={{fontSize: 20, fontWeight: "600"}}>{item.lokAwal}-{item.lokTujuan}</Text>
+                              <Text style={{marginTop: 22, color: "green", fontSize: 16, fontWeight: "500"}}>{item.tglBerangkat}</Text>
+                            </View>
+
                           </View>
                         )}
                       />
                 </View>
               ) : (
-                <View>
-                  <Text>DATA TIDAK DITEMUKAN! PERIKSA INPUTAN DATA!</Text>
+                <View style={styles.notFoundBox}>
+                  <Text style={styles.notFoundText}>DATA TIDAK DITEMUKAN! PERIKSA INPUTAN DATA!</Text>
                 </View>
               )}
           </View>
@@ -124,6 +132,41 @@ const HasilPencarian = ({route}) => {
 
       width: "100%",
       height: "85%",
+    },
+    flightSchedContainer :{
+      flex: 1,
+      marginTop: 26,
+      marginLeft: "10%",
+      marginBottom: 26,
+    },
+    flightSchedBox: {
+      flex: 1,
+      width: "90%",
+      height: 100,
+      borderRadius: 10,
+      flexDirection: "row",
+      justifyContent: "space-between",
+
+      marginTop: 20,
+      padding: 15,
+
+      backgroundColor: "white",
+    },
+    notFoundBox: {
+      backgroundColor: "white",
+
+      width: "80%",
+      height: "35%",
+
+      marginTop: "20%",
+      marginLeft: "10%",
+      alignItems: "center",
+      justifyContent: "center",
+
+      borderRadius: 10,
+    },
+    notFoundText: {
+      fontSize: 28,
     },
   });
 
