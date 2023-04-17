@@ -10,9 +10,8 @@ Kemudian jalankan perintah di bawah ini untuk meng-install semua dependencies ya
 ```
 npm install
 ```
-```
 
-- Setelah terinstall semua dependencies yang dibutuhkan. Selanjutnya jalankan program dengan perintah
+- Setelah terinstall semua dependencies yang dibutuhkan. Selanjutnya jalankan program dengan perintah :
 
 ```
 npx expo start
